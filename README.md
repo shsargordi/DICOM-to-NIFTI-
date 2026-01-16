@@ -9,37 +9,6 @@ This repository provides utilities to preprocess radiotherapy head-and-neck DICO
 
 All conversions rely on **plastimatch** (either containerized via `udocker` or local execution depending on the script).
 
----
-
-## Folder structure and paths (example)
-
-Typical workflow paths used in our pipeline:
-- Raw DICOMs: `/path/to/DataDicom/`
-- Final NIfTI output: `/path/to/Processed/`
-
----
-
-## Scripts (DICOMtoNIFTI/)
-
-The repository includes the following conversion scripts:
-
-- `dcm_extraction_plastimatch-CT-CBCT-RTSTRUCT.py`  
-  Converts **CT + CBCT + RTSTRUCT** to NIfTI. RTSTRUCT masks are exported using the appropriate referenced CT.
-  (preferably the CT with the matching StudyDate).
-
-- `dcm_extraction_plastimatch-CT-CBCT.py`  
-  Converts **CT + CBCT** to NIfTI only (no RTSTRUCT/RTDOSE).
-
-- `dcm_extraction_plastimatch-dosi.py`  
-  Extracts **RTDOSE** and converts the selected dose grid to NIfTI (typically choosing the most relevant/highest-dose file when multiple exist).
-
-- `dcm_extraction_plastimatch-MRI.py`  
-  Converts **MR** DICOM series (folders starting with `MR`) to NIfTI using `--modality MR`.
-
-- `dcm_extraction_plastimatch-RTSTRUCT.py`  
-  Converts **RTSTRUCT** to NIfTI masks only (often with additional checks/filters, e.g., skipping incomplete RTSTRUCTs).
-
----
 
 ## Preprocessing steps (end-to-end)
 
